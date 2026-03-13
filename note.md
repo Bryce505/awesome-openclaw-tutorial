@@ -142,7 +142,7 @@
   }
 }
 ```
-## 切换模型和agent
+## 2.切换模型和agent
 在 OpenClaw 中，快速切换模型或 Agent 的主要方法是使用命令行工具进行配置调整。以下是步骤：
 
 ### 切换模型
@@ -189,3 +189,88 @@
 - [快速切换模型的文档](https://github.com/Bryce505/awesome-openclaw-tutorial/blob/5e5dd5c293752518b2b2f2da4b8c4de621f5f36d/docs/01-basics/03-quick-start.md#L729-L822)
 - [多 Agent 配置示例](https://github.com/Bryce505/awesome-openclaw-tutorial/blob/5e5dd5c293752518b2b2f2da4b8c4de621f5f36d/appendix/E-config-templates.md#L566-L683)
 
+## 3.为不同workspace配置不同agent
+在 OpenClaw 中，可以为不同的 Agents 配置不同的工作空间（workspace），并且这些工作空间可以指向不同的路径。具体的配置方法如下：
+
+### 配置方法
+您可以通过直接编辑配置文件或者使用命令行的方式为每个 Agent 配置独立的 Workspace。
+
+---
+
+#### **方法1：直接编辑配置文件**
+1. 配置文件路径：
+   每个 Agent 的单独配置文件一般存储在：
+   ```
+   ~/.openclaw/agents/<agent-id>/openclaw.json
+   ```
+
+2. 修改配置：
+   打开对应 Agent 的配置文件，编辑 `workspace` 字段，设置工作空间路径。例如：
+   ```json
+   {
+     "id": "code-agent",
+     "name": "技术助手",
+     "model": "deepseek-coder",
+     "workspace": "/home/user/code-workspace",
+     "skills": ["file-search", "github"],
+     "channels": ["wecom"]
+   }
+   ```
+
+   针对另一个 Agent（如内容创作者），可以设置不同的路径：
+   ```json
+   {
+     "id": "content-agent",
+     "name": "内容助手",
+     "model": "claude-3-5",
+     "workspace": "/home/user/content-workspace",
+     "skills": ["web-search", "notion", "image-generation"],
+     "channels": ["telegram"]
+   }
+   ```
+
+3. 验证并生效：
+   配置完成后，重启 OpenClaw Gateway 以使配置生效：
+   ```bash
+   openclaw gateway restart
+   ```
+
+---
+
+#### **方法2：使用命令行配置**
+您也可以通过命令行快速为 Agent 配置不同的工作空间。
+
+1. **列出所有 Agents**:
+   ```bash
+   openclaw agents list
+   ```
+
+2. **为指定 Agent 配置 Workspace**:
+   示例设置：
+   ```bash
+   openclaw config set agents.code-agent.workspace "/home/user/code-workspace"
+   openclaw config set agents.content-agent.workspace "/home/user/content-workspace"
+   ```
+
+3. **验证当前工作空间路径**:
+   ```bash
+   openclaw config get agents.code-agent.workspace
+   openclaw config get agents.content-agent.workspace
+   ```
+
+4. **重启网关**:
+   ```bash
+   openclaw gateway restart
+   ```
+
+---
+
+#### **工作空间路径的配置说明**
+1. 每个工作空间路径可以是完全不同的绝对路径（如 `/path/to/workspace1` 和 `/path/to/workspace2`）。
+2. 通过给每个 Agent 配置不同的路径，可以实现完全独立的工作环境，例如区分代码开发、内容管理、信息分析等任务场景。
+
+---
+
+更多参考：
+- [基础配置文档中的 Workspace 说明](https://github.com/Bryce505/awesome-openclaw-tutorial/blob/5e5dd5c293752518b2b2f2da4b8c4de621f5f36d/note.md#L56-L144)
+- [高级示例：多 Agent 配置](https://github.com/Bryce505/awesome-openclaw-tutorial/blob/5e5dd5c293752518b2b2f2da4b8c4de621f5f36d/appendix/L-config-file-structure.md#L204-L332)
