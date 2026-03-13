@@ -406,6 +406,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 
 ### 📖 附录：速查手册
 
+- [🔄 快速切换 Agent 和模型](docs/quick-agent-model-switch.md) - 多种切换方式、多 Agent 配置、场景化推荐
 - [附录A：命令速查表](appendix/A-command-reference.md) - 100+常用命令，5大类快速查找
 - [附录B：必装Skills清单](appendix/B-skills-catalog.md) - Top 10必装技能，附安装教程
 - [附录C：API服务商对比](appendix/C-api-comparison.md) - 10+服务商价格对比，帮你省钱
