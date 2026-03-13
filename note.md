@@ -142,3 +142,50 @@
   }
 }
 ```
+## 切换模型和agent
+在 OpenClaw 中，快速切换模型或 Agent 的主要方法是使用命令行工具进行配置调整。以下是步骤：
+
+### 切换模型
+1. **设置目标模型**: 使用 `openclaw config set` 命令指定首选模型。
+   ```bash
+   # 切换到 DeepSeek 模型
+   openclaw config set agents.defaults.model.primary "deepseek/deepseek-chat"
+
+   # 切换到 Claude Haiku 模型
+   openclaw config set agents.defaults.model.primary "maynor/claude-haiku-4-5-20251001"
+   ```
+
+2. **重启生效**: 切换模型后，需要通过以下命令重启网关以使更改生效：
+   ```bash
+   openclaw gateway restart
+   ```
+
+3. **手动查看或编辑配置文件**: 配置文件存储在 `~/.openclaw/openclaw.json`，可以直接编辑该文件进行高级设置。
+
+---
+
+### 切换 Agent
+1. **为特定 Agent 配置模型**:
+   ```bash
+   # 为技术开发 Agent 配置一个模型
+   openclaw config set models.providers.anthropic.apiKey "sk-ant-xxx" --agent tech-dev
+
+   # 为内容撰写 Agent 使用不同的模型
+   openclaw config set models.providers.openai.apiKey "sk-yyy" --agent content-writer
+   ```
+
+2. **验证和测试配置**:
+   ```bash
+   # 验证 Agent 配置
+   openclaw config get --agent tech-dev
+
+   # 测试 Agent 的功能
+   openclaw agent --message --agent tech-dev "Hello"
+   ```
+
+---
+
+详细说明与更多设置技巧请参考以下文档内容：
+- [快速切换模型的文档](https://github.com/Bryce505/awesome-openclaw-tutorial/blob/5e5dd5c293752518b2b2f2da4b8c4de621f5f36d/docs/01-basics/03-quick-start.md#L729-L822)
+- [多 Agent 配置示例](https://github.com/Bryce505/awesome-openclaw-tutorial/blob/5e5dd5c293752518b2b2f2da4b8c4de621f5f36d/appendix/E-config-templates.md#L566-L683)
+
