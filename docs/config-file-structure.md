@@ -64,19 +64,11 @@
     "port": 18789
   }
 }
-```text
-**查看命令**:
-```bash
-# 查看全局配置
-openclaw config get
+```
 
-# 查看特定配置项
-openclaw config get models.default
+- 查看全局配置：openclaw config get
+- 查看特定配置项：openclaw config get models.default
 
-# 编辑配置文件
-nano ~/.openclaw/openclaw.json
-```text
----
 
 ### 2. Agent 专属配置
 
