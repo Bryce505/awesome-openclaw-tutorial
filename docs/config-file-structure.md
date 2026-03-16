@@ -94,9 +94,10 @@
     "role": "专注于代码开发和技术问题"
   }
 }
+```
 ```text
 **查看命令**:
-```bash
+
 # 查看 Agent 配置
 openclaw config get --agent tech-dev
 
