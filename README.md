@@ -415,6 +415,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 - [附录G：文档链接验证](appendix/G-links-validation.md) - 所有链接状态检查
 - [附录H：配置文件模板](appendix/H-config-templates.md) - 开箱即用的配置示例
 - [附录I：思考题参考答案](appendix/I-thinking-questions-answers.md) - 各章节思考题详解
+- [附录O：快速切换模型和 Agent 指南](appendix/O-quick-switch-guide.md) - 临时切换、永久切换、多 Agent 配置三种方式速查
 
 ## 📊 项目数据
 
