@@ -86,6 +86,12 @@ title: 首页
 | [第14章：创意应用探索](docs/04-practical-cases/14-creative-applications.md) | AI 绘画、视频脚本、多语言翻译、数据分析 |
 | [第15章：超级个体实战](docs/04-practical-cases/15-solo-entrepreneur-cases.md) | 一人公司运营、自由职业、个人品牌、成本控制 |
 
+### 实用指南
+
+| 指南 | 内容 |
+|------|------|
+| [🔄 快速切换 Agent 和模型](docs/quick-agent-model-switch.md) | 多种切换方式、多 Agent 配置、场景化推荐 |
+
 ### 附录：速查手册
 
 | 附录 | 内容 |
